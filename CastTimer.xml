@@ -7,7 +7,6 @@
   <Scripts>
    <OnEvent>CastTimer.OnEvent();</OnEvent>
    <OnLoad>CastTimer.OnLoad();</OnLoad>
-   <OnUpdate>CastTimer.OnUpdate();</OnUpdate>
   </Scripts>
  </Frame>
 </Ui>
