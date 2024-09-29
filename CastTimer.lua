@@ -38,11 +38,6 @@ end
 -- Called when the helper's event frame is loaded.
 -- **********************************************************************************
 function CastTimer.OnLoad()
-	if not CombatLogAdd then
-		CastTimer.Print("Requires SuperWoW.")
-		return
-	end
-
 	table.insert(listenEvents, "SPELLCAST_INTERRUPTED");      -- Failed  casting
 	table.insert(listenEvents, "CHAT_MSG_SPELL_SELF_DAMAGE"); -- Failed  casting
 
@@ -109,7 +104,7 @@ function CastTimer.OnEvent()
 			duration = currentTime - firstCastTime
 			local castTime = currentTime - castStartTime;          -- calculate client cast time
 
-			if castTime > 0.5 then
+			if castTime > 1 then
 				averageClientCastTime = (averageClientCastTime * numCastsInClientAverage + castTime) /
 						(numCastsInClientAverage + 1);                     -- calculate average cast time
 				numCastsInClientAverage = numCastsInClientAverage + 1; -- increment number of casts in average
