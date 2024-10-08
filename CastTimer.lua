@@ -39,7 +39,8 @@ end
 -- **********************************************************************************
 function CastTimer.OnLoad()
 	table.insert(listenEvents, "SPELLCAST_INTERRUPTED");      -- Failed  casting
-	table.insert(listenEvents, "CHAT_MSG_SPELL_SELF_DAMAGE"); -- Failed  casting
+	table.insert(listenEvents, "CHAT_MSG_SPELL_SELF_DAMAGE"); 
+	table.insert(listenEvents, "CHAT_MSG_SPELL_SELF_BUFF"); 
 
 	-- Register for the ADDON_LOADED event.
 	CastTimerEventFrame:RegisterEvent("ADDON_LOADED");
@@ -92,7 +93,7 @@ function CastTimer.OnEvent()
 			-- Initialize the helper object.
 			CastTimer.Init();
 		end
-	elseif (event == "CHAT_MSG_SPELL_SELF_DAMAGE") then
+	elseif (event == "CHAT_MSG_SPELL_SELF_DAMAGE" or event == "CHAT_MSG_SPELL_SELF_BUFF") then
 		local currentTime = GetTime(); -- get current time
 		-- if more than 10 seconds have passed since last cast, reset average cast time
 		if (currentTime - castStartTime > 10) then
