@@ -110,7 +110,7 @@ function CastTimer.OnEvent()
 			duration = currentTime - firstCastTime
 			local castTime = currentTime - castStartTime;          -- calculate client cast time
 
-			if castTime > 1 then
+			if castTime > 0.5 then
 				averageClientCastTime = (averageClientCastTime * numCastsInClientAverage + castTime) /
 						(numCastsInClientAverage + 1);                     -- calculate average cast time
 				numCastsInClientAverage = numCastsInClientAverage + 1; -- increment number of casts in average
